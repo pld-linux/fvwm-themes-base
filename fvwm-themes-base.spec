@@ -19,7 +19,7 @@ BuildRequires:	fvwm2
 BuildRequires:	gnome-core
 BuildRequires:	/usr/bin/perl
 Requires:	m4
-BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 FVWM Themes is a powerful configuration framework for FVWM, designed
