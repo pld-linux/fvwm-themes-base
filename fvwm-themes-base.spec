@@ -8,6 +8,7 @@ Group:		X11/Window Managers
 Source0:	http://dl.sourceforge.net/fvwm-themes/%{name}-%{version}.tar.gz
 # Source0-md5:	25dd1ab1cb8b96b7d7787df14b92053a
 Source1:	%{name}-rpm-wa.tar.gz
+# Source1-md5:	cd15c2d62f8518769ecbf9f16383de30
 Source2:	%{name}-install-menu-system.sh
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://fvwm-themes.sourceforge.org/
