@@ -19,8 +19,6 @@ BuildRequires:	gnome-core
 BuildRequires:	perl
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 FVWM Themes is a powerful configuration framework for FVWM, designed
