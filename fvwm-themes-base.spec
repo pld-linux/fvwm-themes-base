@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://dl.sourceforge.net/fvwm-themes/%{name}-%{version}.tar.gz
+# Source0-md5:	25dd1ab1cb8b96b7d7787df14b92053a
 Source1:	%{name}-rpm-wa.tar.gz
 Source2:	%{name}-install-menu-system.sh
 Patch0:		%{name}-DESTDIR.patch
