@@ -9,16 +9,13 @@ Source0:	http://telia.dl.sourceforge.net/sourceforge/fvwm-themes/%{name}-%{versi
 Source1:	%{name}-rpm-wa.tar.gz
 Source2:	%{name}-install-menu-system.sh
 URL:		http://fvwm-themes.sourceforge.org/
-Autoreq:	1
-Requires:	perl >= 5.004
-Requires:	m4
 BuildRequires:	XFree86-tools
-BuildRequires:	awk
 BuildRequires:	fvwm2
 BuildRequires:	gnome-core
 BuildRequires:	perl
+Requires:	perl >= 5.004
+Requires:	m4
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 FVWM Themes is a powerful configuration framework for FVWM, designed
@@ -61,6 +58,7 @@ FVWM Themes является мощным окружением для оконного менеджера FVWM.
 	--disable-build-menus \
 	--disable-menu-system \
 	--with-fvwm-bindir=%{_bindir}
+
 %{__make}
 
 %install
@@ -75,15 +73,6 @@ cp -f %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system/
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(644,root,root,755)
-%doc AUTHORS COPYING INSTALL NEWS README TODO
-%doc doc/FAQ doc/README.1st doc/colorsets doc/creating-themes
-%doc doc/fvwm-themes.lsm
-%{_bindir}/*
-%{_mandir}/*/*
-%{_datadir}/*/*
-
 %post
 [ -x %{_bindir}/fvwm-themes-menuapp ] && %{_bindir}/fvwm-themes-menuapp --site --build-menus --remove-popup || true
 sh %{_datadir}/fvwm/menu-system/install-menu-system.sh Install
@@ -95,14 +84,12 @@ echo ""
 %preun
 [ -f %{_datadir}/fvwm/menu-system/install-menu-system.sh ] && sh %{_datadir}/fvwm/menu-system/install-menu-system.sh Uninstall || true
 
-## TODO: how to specify the current date in .spec? Or how to run a `command`?
-#%changelog
-#
-#* Tue 23 Oct 2001 18:52:00 UTC  olicha  <olivier.chapuis@free.fr>
-#- added a way to handle the debian menu system on any system
-#
-#* Thu 07 Sep 2000 20:00:00 IDT  FVWM Themes Developers  <fvwm-themes-devel@lists.sourceforge.net>
-#- Auto building %{PACKAGE_VERSION}
-#
-#* Thu 07 Sep 2000 20:00:00 IDT  Mikhael Goikhman  <migo@homemail.com>
-#- First try at making the package
+%files
+%defattr(644,root,root,755)
+# isn't COPYING just GPL?
+%doc AUTHORS COPYING INSTALL NEWS README TODO
+%doc doc/FAQ doc/README.1st doc/colorsets doc/creating-themes
+%doc doc/fvwm-themes.lsm
+%{_bindir}/*
+%{_mandir}/*/*
+%{_datadir}/*/*
