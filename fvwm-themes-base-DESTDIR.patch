@@ -1,6 +1,6 @@
---- fvwm-themes-base-0.6.0/Makefile.am.orig	Tue Oct 23 14:38:02 2001
-+++ fvwm-themes-base-0.6.0/Makefile.am	Wed Feb 12 12:08:11 2003
-@@ -19,32 +19,32 @@
+--- fvwm-themes-base-0.6.1/Makefile.am.orig	Fri May 23 20:25:48 2003
++++ fvwm-themes-base-0.6.1/Makefile.am	Fri May 23 20:37:43 2003
+@@ -19,36 +19,36 @@
  	RUN_UPDATEMENU=@RUN_UPDATEMENU@
  	UPDATE_MENU=@UPDATE_MENU@
  
@@ -18,15 +18,21 @@
 +		find "$(DESTDIR)$(FT_DATADIR)/$$dir" -name CVS -exec rm -r {} \; 2>/dev/null; \
  	done
  
--	sed -e "s,xGNOME_IMAGES_DIRx,$(GNOME_IMAGES_DIR),g" \
+-	$(FVWM_BINDIR)/fvwm-config --version | grep 2.4. >/dev/null \
+-		&& rm -rf "$(FT_DATADIR)/themes/redmondxp" || true
++#	$(FVWM_BINDIR)/fvwm-config --version | grep 2.4. >/dev/null \
++#		&& rm -rf "$(DESTDIR)$(FT_DATADIR)/themes/redmondxp" || true
+ 
+ 	sed -e "s,xGNOME_IMAGES_DIRx,$(GNOME_IMAGES_DIR),g" \
 -		$(SETTINGS_FILE) > $(SETTINGS_FILE).tmp && \
 -	mv -f $(SETTINGS_FILE).tmp $(SETTINGS_FILE)
-+	sed -e "s,xGNOME_IMAGES_DIRx,$(GNOME_IMAGES_DIR),g" \
 +		$(DESTDIR)$(SETTINGS_FILE) > $(DESTDIR)$(SETTINGS_FILE).tmp && \
 +	mv -f $(DESTDIR)$(SETTINGS_FILE).tmp $(DESTDIR)$(SETTINGS_FILE)
  
+-	PATH="$(bindir):$(FVWM_BINDIR):$$PATH"; \
 -	$(bindir)/fvwm-themes-config --site --reset
-+#	$(DESTDIR)$(bindir)/fvwm-themes-config --site --reset
++#	PATH="$(bindir):$(FVWM_BINDIR):$$PATH"; \
++#	$(bindir)/fvwm-themes-config --site --reset
  
  	if test "$(BUILD_MENUS)" = "yes"; then \
 -		$(bindir)/fvwm-themes-menuapp --site --build-menus --remove-popup; \
