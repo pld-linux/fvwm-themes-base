@@ -1,14 +1,14 @@
 Summary:	FVWM Themes, configuration framework for FVWM
 Summary(pl):	FVWM Themes - szkielet konfiguracji dla FVWM
 Name:		fvwm-themes-base
-Version:	0.6.0
-Release:	2
+Version:	0.6.1
+Release:	1
 License:	GPL
 Group:		X11/Window Managers
+# Source0-md5:	6133bb363bab6d0ce544fa17bc267e6f
 Source0:	http://dl.sourceforge.net/fvwm-themes/%{name}-%{version}.tar.gz
-# Source0-md5:	25dd1ab1cb8b96b7d7787df14b92053a
-Source1:	%{name}-rpm-wa.tar.gz
 # Source1-md5:	cd15c2d62f8518769ecbf9f16383de30
+Source1:	%{name}-rpm-wa.tar.gz
 Source2:	%{name}-install-menu-system.sh
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://fvwm-themes.sourceforge.org/
@@ -17,8 +17,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	fvwm2
 BuildRequires:	gnome-core
-BuildRequires:	perl
-Requires:	perl >= 5.004
+BuildRequires:	/usr/bin/perl
 Requires:	m4
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -100,7 +99,7 @@ echo ""
 # COPYING is a short note, doesn't contain full GPL text
 %doc AUTHORS COPYING INSTALL NEWS README TODO
 %doc doc/FAQ doc/README.1st doc/colorsets doc/creating-themes
-%{_bindir}/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/man?/*
 %{_datadir}/fvwm/images
 %dir %{_datadir}/fvwm/locale
