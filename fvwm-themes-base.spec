@@ -5,11 +5,14 @@ Version:	0.6.0
 Release:	2
 License:	GPL
 Group:		X11/Window Managers
-Source0:	http://telia.dl.sourceforge.net/sourceforge/fvwm-themes/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/fvwm-themes/%{name}-%{version}.tar.gz
 Source1:	%{name}-rpm-wa.tar.gz
 Source2:	%{name}-install-menu-system.sh
+Patch0:		%{name}-DESTDIR.patch
 URL:		http://fvwm-themes.sourceforge.org/
 BuildRequires:	XFree86-tools
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	fvwm2
 BuildRequires:	gnome-core
 BuildRequires:	perl
@@ -51,9 +54,13 @@ FVWM Themes является мощным окружением для оконного менеджера FVWM.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
-./configure --prefix=%{_prefix} \
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure \
 	--disable-run-updatemenu \
 	--disable-build-menus \
 	--disable-menu-system \
@@ -63,12 +70,14 @@ FVWM Themes является мощным окружением для оконного менеджера FVWM.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} ROOT_PREFIX=$RPM_BUILD_ROOT install
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 # menu-methode stuff
 install -d $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system
-cp -f %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system/
-cp -f %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system/
+cp -f %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system
+cp -f %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/fvwm/menu-system
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -86,10 +95,18 @@ echo ""
 
 %files
 %defattr(644,root,root,755)
-# isn't COPYING just GPL?
+# COPYING is a short note, doesn't contain full GPL text
 %doc AUTHORS COPYING INSTALL NEWS README TODO
 %doc doc/FAQ doc/README.1st doc/colorsets doc/creating-themes
-%doc doc/fvwm-themes.lsm
 %{_bindir}/*
-%{_mandir}/*/*
-%{_datadir}/*/*
+%{_mandir}/man?/*
+%{_datadir}/fvwm/images
+%dir %{_datadir}/fvwm/locale
+%{_datadir}/fvwm/locale/en
+%lang(fr) %{_datadir}/fvwm/locale/fr
+%lang(ja) %{_datadir}/fvwm/locale/ja
+%lang(ru) %{_datadir}/fvwm/locale/ru
+%{_datadir}/fvwm/menu-system
+%{_datadir}/fvwm/sounds
+%{_datadir}/fvwm/themes
+%{_datadir}/fvwm/Fvwm*
