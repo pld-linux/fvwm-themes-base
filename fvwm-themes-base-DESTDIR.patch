@@ -1,0 +1,57 @@
+--- fvwm-themes-base-0.6.0/Makefile.am.orig	Tue Oct 23 14:38:02 2001
++++ fvwm-themes-base-0.6.0/Makefile.am	Wed Feb 12 12:08:11 2003
+@@ -19,32 +19,32 @@
+ 	RUN_UPDATEMENU=@RUN_UPDATEMENU@
+ 	UPDATE_MENU=@UPDATE_MENU@
+ 
+-	$(mkinstalldirs) $(FT_DATADIR)
++	$(mkinstalldirs) $(DESTDIR)$(FT_DATADIR)
+ 	for dir in $(FT_DATA_SUBDIRS); do \
+ 		chmod -R o-w,go+rX $$dir 2>/dev/null || true; \
+-		rm -rf "$(FT_DATADIR)/$$dir"; \
++		rm -rf "$(DESTDIR)$(FT_DATADIR)/$$dir"; \
+ 		(if test -f $$dir.tar.gz; then gzip -dc $$dir.tar.gz || exit 201; \
+ 		else $(TAR) cpf - $$dir || exit 202; fi) | \
+-		(cd "$(FT_DATADIR)" && $(TAR) xfBp - || exit 203); \
+-		find "$(FT_DATADIR)/$$dir" -name CVS -exec rm -r {} \; 2>/dev/null; \
++		(cd "$(DESTDIR)$(FT_DATADIR)" && $(TAR) xfBp - || exit 203); \
++		find "$(DESTDIR)$(FT_DATADIR)/$$dir" -name CVS -exec rm -r {} \; 2>/dev/null; \
+ 	done
+ 
+-	sed -e "s,xGNOME_IMAGES_DIRx,$(GNOME_IMAGES_DIR),g" \
+-		$(SETTINGS_FILE) > $(SETTINGS_FILE).tmp && \
+-	mv -f $(SETTINGS_FILE).tmp $(SETTINGS_FILE)
++	sed -e "s,xGNOME_IMAGES_DIRx,$(GNOME_IMAGES_DIR),g" \
++		$(DESTDIR)$(SETTINGS_FILE) > $(DESTDIR)$(SETTINGS_FILE).tmp && \
++	mv -f $(DESTDIR)$(SETTINGS_FILE).tmp $(DESTDIR)$(SETTINGS_FILE)
+ 
+-	$(bindir)/fvwm-themes-config --site --reset
++#	$(DESTDIR)$(bindir)/fvwm-themes-config --site --reset
+ 
+ 	if test "$(BUILD_MENUS)" = "yes"; then \
+-		$(bindir)/fvwm-themes-menuapp --site --build-menus --remove-popup; \
++		$(DESTDIR)$(bindir)/fvwm-themes-menuapp --site --build-menus --remove-popup; \
+ 	fi
+ 
+ 	if test "$(GNOME_ICONS)" = "yes"; then \
+-		$(bindir)/fvwm-themes-images --ft-install --gnome; \
++		$(DESTDIR)$(bindir)/fvwm-themes-images --ft-install --gnome; \
+ 	fi
+ 
+ 	if test "$(KDE2_ICONS)" = "yes"; then \
+-		$(bindir)/fvwm-themes-images --ft-install --kde2; \
++		$(DESTDIR)$(bindir)/fvwm-themes-images --ft-install --kde2; \
+ 	fi
+ 
+ 	if test "$(RUN_UPDATEMENU)" = "yes"; then \
+--- fvwm-themes-base-0.6.0/acinclude.m4.orig	Wed Aug 15 08:18:28 2001
++++ fvwm-themes-base-0.6.0/acinclude.m4	Wed Feb 12 12:06:13 2003
+@@ -2,7 +2,7 @@
+ 
+ dnl mg_ARG_WITH(NAME, HELP-STRING, VAR [, DEFAULT-VALUE])
+ AC_DEFUN(mg_ARG_WITH,
+-[AC_DIVERT_PUSH(AC_DIVERSION_NOTICE)dnl
++[AC_DIVERT_PUSH(NOTICE)dnl
+ ac_help="$ac_help
+ [$2]"
+ AC_DIVERT_POP()dnl
