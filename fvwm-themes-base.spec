@@ -1,10 +1,11 @@
 Summary:	FVWM Themes, configuration framework for FVWM
+Summary(pl):	FVWM Themes - szkielet konfiguracji dla FVWM
 Name:		fvwm-themes-base
 Version:	0.6.0
 Release:	1
 License:	GPL
 Group:		X11/Window Managers
-Source0:	%{name}-%{version}.tar.gz
+Source0:	http://telia.dl.sourceforge.net/sourceforge/fvwm-themes/%{name}-%{version}.tar.gz
 Source1:	%{name}-rpm-wa.tar.gz
 Source2:	%{name}-install-menu-system.sh
 URL:		http://fvwm-themes.sourceforge.org/
@@ -18,7 +19,7 @@ BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 FVWM Themes is a powerful configuration framework for FVWM, designed
-to be easily extendible and configurable, includes several pre-built
+to be easily extensible and configurable, includes several pre-built
 themes, a pack of images and sounds.
 
 This base package contains the theme engine and utilities as well as 8
@@ -31,6 +32,14 @@ et des fichiers sons.
 
 Le paquet main contient le moteur et des utilitaires ainsi que 8
 thËmes.
+
+%description -l pl
+FVWM Themes to potÍøny szkielet konfiguracji dla FVWM, stworzony tak,
+by byÊ ≥atwo rozszerzalnym i konfigurowalnym. Zawiera kilka
+predefiniowanych motywÛw, zestaw obrazkÛw i dºwiÍkÛw.
+
+Ten podstawowy pakiet zawiera silnik motywÛw i narzÍdzia oraz 8
+motywÛw.
 
 %description -l ru
 FVWM Themes —◊Ã—≈‘”— Õœ›ŒŸÕ œÀ“’÷≈Œ…≈Õ ƒÃ— œÀœŒŒœ«œ Õ≈Œ≈ƒ÷≈“¡ FVWM.
@@ -65,24 +74,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-
 %doc AUTHORS COPYING INSTALL NEWS README TODO
 %doc doc/FAQ doc/README.1st doc/colorsets doc/creating-themes
 %doc doc/fvwm-themes.lsm
-%{_prefix}/bin/*
-%{_prefix}/man/*/*
-%{_prefix}/share/*/*
+%{_bindir}/*
+%{_mandir}/*/*
+%{_datadir}/*/*
 
 %post
-[ -x %{prefix}/bin/fvwm-themes-menuapp ] && %{prefix}/bin/fvwm-themes-menuapp --site --build-menus --remove-popup || true
-sh /usr/share/fvwm/menu-system/install-menu-system.sh Install
+[ -x %{_bindir}/fvwm-themes-menuapp ] && %{_bindir}/fvwm-themes-menuapp --site --build-menus --remove-popup || true
+sh %{_datadir}/fvwm/menu-system/install-menu-system.sh Install
 echo ""
 echo "    If you are running fvwm-themes now, to avoid problems choose"
 echo "    'Reset all to the default' from the Theme Management menu."
 echo ""
 
 %preun
-[ -f /usr/share/fvwm/menu-system/install-menu-system.sh ] && sh /usr/share/fvwm/menu-system/install-menu-system.sh Uninstall || true
+[ -f %{_datadir}/fvwm/menu-system/install-menu-system.sh ] && sh %{_datadir}/fvwm/menu-system/install-menu-system.sh Uninstall || true
 
 ## TODO: how to specify the current date in .spec? Or how to run a `command`?
 #%changelog
