@@ -2,7 +2,7 @@ Summary:	FVWM Themes, configuration framework for FVWM
 Summary(pl):	FVWM Themes - szkielet konfiguracji dla FVWM
 Name:		fvwm-themes-base
 Version:	0.6.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://telia.dl.sourceforge.net/sourceforge/fvwm-themes/%{name}-%{version}.tar.gz
@@ -12,6 +12,11 @@ URL:		http://fvwm-themes.sourceforge.org/
 Autoreq:	1
 Requires:	perl >= 5.004
 Requires:	m4
+BuildRequires:	XFree86-tools
+BuildRequires:	awk
+BuildRequires:	fvwm2
+BuildRequires:	gnome-core
+BuildRequires:	perl
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
