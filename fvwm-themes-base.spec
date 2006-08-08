@@ -55,7 +55,7 @@ FVWM Themes является мощным окружением для оконного менеджера FVWM.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %{__aclocal}
