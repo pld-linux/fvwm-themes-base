@@ -1,5 +1,5 @@
 Summary:	FVWM Themes, configuration framework for FVWM
-Summary(pl):	FVWM Themes - szkielet konfiguracji dla FVWM
+Summary(pl.UTF-8):   FVWM Themes - szkielet konfiguracji dla FVWM
 Name:		fvwm-themes-base
 Version:	0.6.1
 Release:	1
@@ -29,29 +29,29 @@ themes, a pack of images and sounds.
 This base package contains the theme engine and utilities as well as 8
 themes.
 
-%description -l fr
-FVWM Themes est un systХme de configuration puissant pour FVWM. Il est
-extansible, facilement configurable et contient des thХmes, des images
+%description -l fr.UTF-8
+FVWM Themes est un systц╗me de configuration puissant pour FVWM. Il est
+extansible, facilement configurable et contient des thц╗mes, des images
 et des fichiers sons.
 
 Le paquet main contient le moteur et des utilitaires ainsi que 8
-thХmes.
+thц╗mes.
 
-%description -l pl
-FVWM Themes to potЙ©ny szkielet konfiguracji dla FVWM, stworzony tak,
-by byФ Ёatwo rozszerzalnym i konfigurowalnym. Zawiera kilka
-predefiniowanych motywСw, zestaw obrazkСw i d╪wiЙkСw.
+%description -l pl.UTF-8
+FVWM Themes to potд≥е╪ny szkielet konfiguracji dla FVWM, stworzony tak,
+by byд┤ е┌atwo rozszerzalnym i konfigurowalnym. Zawiera kilka
+predefiniowanych motywцЁw, zestaw obrazkцЁw i dе╨wiд≥kцЁw.
 
-Ten podstawowy pakiet zawiera silnik motywСw i narzЙdzia oraz 8
-motywСw.
+Ten podstawowy pakiet zawiera silnik motywцЁw i narzд≥dzia oraz 8
+motywцЁw.
 
-%description -l ru
-FVWM Themes является мощным окружением для оконного менеджера FVWM.
-спроектированным с учетом легкости расширения и конфигурации. Пакет
-включает в себя готовые темы, графические и звуковые файлы.
+%description -l ru.UTF-8
+FVWM Themes я▐п╡п╩я▐п╣я┌я│я▐ п╪п╬я┴п╫я▀п╪ п╬п╨я─я┐п╤п╣п╫п╦п╣п╪ п╢п╩я▐ п╬п╨п╬п╫п╫п╬пЁп╬ п╪п╣п╫п╣п╢п╤п╣я─п╟ FVWM.
+я│п©я─п╬п╣п╨я┌п╦я─п╬п╡п╟п╫п╫я▀п╪ я│ я┐я┤п╣я┌п╬п╪ п╩п╣пЁп╨п╬я│я┌п╦ я─п╟я│я┬п╦я─п╣п╫п╦я▐ п╦ п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦п╦. п÷п╟п╨п╣я┌
+п╡п╨п╩я▌я┤п╟п╣я┌ п╡ я│п╣п╠я▐ пЁп╬я┌п╬п╡я▀п╣ я┌п╣п╪я▀, пЁя─п╟я└п╦я┤п╣я│п╨п╦п╣ п╦ п╥п╡я┐п╨п╬п╡я▀п╣ я└п╟п╧п╩я▀.
 
-Данный базовый пакет содержит конфигурационные утилиты для
-всевозможных манипуляций с темами и 8 тем.
+п■п╟п╫п╫я▀п╧ п╠п╟п╥п╬п╡я▀п╧ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ п╨п╬п╫я└п╦пЁя┐я─п╟я├п╦п╬п╫п╫я▀п╣ я┐я┌п╦п╩п╦я┌я▀ п╢п╩я▐
+п╡я│п╣п╡п╬п╥п╪п╬п╤п╫я▀я┘ п╪п╟п╫п╦п©я┐п╩я▐я├п╦п╧ я│ я┌п╣п╪п╟п╪п╦ п╦ 8 я┌п╣п╪.
 
 %prep
 %setup -q
