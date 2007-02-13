@@ -1,5 +1,5 @@
 Summary:	FVWM Themes, configuration framework for FVWM
-Summary(pl.UTF-8):   FVWM Themes - szkielet konfiguracji dla FVWM
+Summary(pl.UTF-8):	FVWM Themes - szkielet konfiguracji dla FVWM
 Name:		fvwm-themes-base
 Version:	0.6.1
 Release:	1
