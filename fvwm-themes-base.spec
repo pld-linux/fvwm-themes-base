@@ -5,10 +5,10 @@ Version:	0.6.1
 Release:	1
 License:	GPL
 Group:		X11/Window Managers
-# Source0-md5:	6133bb363bab6d0ce544fa17bc267e6f
 Source0:	http://dl.sourceforge.net/fvwm-themes/%{name}-%{version}.tar.gz
-# Source1-md5:	cd15c2d62f8518769ecbf9f16383de30
+# Source0-md5:	6133bb363bab6d0ce544fa17bc267e6f
 Source1:	%{name}-rpm-wa.tar.gz
+# Source1-md5:	cd15c2d62f8518769ecbf9f16383de30
 Source2:	%{name}-install-menu-system.sh
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://fvwm-themes.sourceforge.org/
